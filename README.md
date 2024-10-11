@@ -1,9 +1,5 @@
-# Fresh website
-
-This is the Fresh website source. The Fresh website contains:
-
-- a homepage
-- a documentation page
+# docSite
+SSR type doc site for my SaaS project made in DENO Fresh
 
 ### Usage
 
