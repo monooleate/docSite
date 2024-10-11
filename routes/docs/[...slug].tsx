@@ -145,14 +145,15 @@ export const handler = define.handlers<Data>({
 export default define.page<typeof handler>(function DocsPage(props) {
   /*   console.log(`Headings: ${JSON.stringify(props)}`); */
   const { page } = props.data;
-
+  const { url } = props;
+  console.log(url.toString());
   const { html, headings } = renderMarkdown(page.markdown);
 
   return (
     <div class="flex flex-col min-h-screen mx-auto max-w-screen-2xl">
       <Header title="docs" active="/docs" />
       <div f-client-nav={true}>
-        <MobileSidebar page={page} />
+        <MobileSidebar page={page} url={url.toString()} />
         <div class="flex mx-auto max-w-screen-2xl px-0 md:px-4 md:py-0 justify-start">
           <label
             for="docs_sidebar"
@@ -181,7 +182,11 @@ export default define.page<typeof handler>(function DocsPage(props) {
               <SearchButton class="mr-4 sm:mr-0" />
               <ul class="list-inside font-semibold nested ml-2.5 bg-lightBackground text-lightText dark:bg-darkBackground dark:text-darkText">
                 {CATEGORIES[page.version].map((category) => (
-                  <SidebarCategory key={category.href} category={category} />
+                  <SidebarCategory
+                    key={category.href}
+                    category={category}
+                    url={url.toString()}
+                  />
                 ))}
               </ul>
             </div>
@@ -237,7 +242,7 @@ export default define.page<typeof handler>(function DocsPage(props) {
   );
 });
 
-function MobileSidebar({ page }: { page: Page }) {
+function MobileSidebar({ page, url }: { page: Page; url: string }) {
   return (
     <div class="lg:hidden">
       <input
@@ -256,7 +261,11 @@ function MobileSidebar({ page }: { page: Page }) {
             <SearchButton class="mr-4 sm:mr-0" />
             <ul class="list-inside font-semibold nested ml-2.5">
               {CATEGORIES[page.version].map((category) => (
-                <SidebarCategory key={category.href} category={category} />
+                <SidebarCategory
+                  key={category.href}
+                  category={category}
+                  url={url.toString()}
+                />
               ))}
             </ul>
           </nav>

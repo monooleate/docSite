@@ -58,3 +58,27 @@ h5,
 h6 {
   font-weight: 750;
 }
+
+summary::before {
+  content: "▶";
+  display: inline-block;
+  margin-right: 0.5em;
+  transition: transform 0.2s;
+}
+
+details {
+  border-top: 1px solid #ccc; /* Adjust color and width as needed */
+  padding-top: 10px; /* Optional: space between the border and content */
+  margin-top: 10px; /* Optional: spacing between details elements */
+}
+
+details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+details.no-content summary::marker {
+  content: "";
+  color: gray;
+  font-style: italic;
+}
+
