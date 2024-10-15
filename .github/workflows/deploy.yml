@@ -22,7 +22,10 @@ jobs:
         uses: denoland/setup-deno@v1
         with:
           deno-version: v1.x
-
+          
+      - name: Cache Deno modules
+        run: deno cache --allow-scripts=esbuild src/dev/mod.ts
+        
       - name: Build step
         run: "deno run -A dev.ts build"
 
