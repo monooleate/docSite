@@ -25,7 +25,7 @@ jobs:
 
       # Add Deno cache step here
       - name: Cache Deno modules
-        run: deno cache --allow-scripts=esbuild src/dev/mod.ts
+        run: deno cache --allow-scripts=npm:esbuild src/dev/mod.ts
 
       - name: Build step
         run: "deno task build"
