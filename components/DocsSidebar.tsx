@@ -12,9 +12,13 @@ export function SidebarCategory(props: {
   return (
     <details
       key={title}
-      open={isSummaryOpened(title, props.url)}
+      open={(isSummaryOpened(title, props.url) || entries.length === 0)
+        ? true
+        : false}
       name={title}
-      class={entries.length === 0 ? "no-content" : ""}
+      class={entries.length === 0
+        ? "no-content"
+        : ""} /* it is question weather needed or not */
     >
       <summary class="my-2 block bg-lightBackground text-lightText dark:bg-darkBackground dark:text-darkText">
         <a

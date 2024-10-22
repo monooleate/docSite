@@ -146,13 +146,14 @@ export default define.page<typeof handler>(function DocsPage(props) {
   /*   console.log(`Headings: ${JSON.stringify(props)}`); */
   const { page } = props.data;
   const { url } = props;
-  console.log(url.toString());
+  /* console.log(url.toString()); */
   const { html, headings } = renderMarkdown(page.markdown);
 
   return (
     <div class="flex flex-col min-h-screen mx-auto max-w-screen-2xl">
       <Header title="docs" active="/docs" />
       <div f-client-nav={true}>
+        {/* <Partial name="nav-side"> */}
         <MobileSidebar page={page} url={url.toString()} />
         <div class="flex mx-auto max-w-screen-2xl px-0 md:px-4 md:py-0 justify-start">
           <label
@@ -192,6 +193,7 @@ export default define.page<typeof handler>(function DocsPage(props) {
             </div>
           </div>
         </nav>
+        {/* </Partial> */}
         <Partial name="docs-main">
           <div class="w-full min-w-0">
             <main class="lg:ml-[18rem] mt-4 min-w-0 mx-auto">

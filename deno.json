@@ -1,5 +1,5 @@
 {
-  "nodeModulesDir": true,
+  "nodeModulesDir": "auto",
   "tasks": {
     "start": "deno run -A --watch=static/,routes/,../src,../docs dev.ts",
     "build": "deno run -A dev.ts build",
@@ -25,10 +25,10 @@
     "cssnano": "npm:cssnano@6.0.3",
     "esbuild": "npm:esbuild@0.23.1",
     "esbuild-wasm": "npm:esbuild-wasm@0.23.1",
-    "fresh": "../src/mod.ts",
-    "fresh/compat": "../src/compat/mod.ts",
-    "fresh/dev": "../src/dev/mod.ts",
-    "fresh/runtime": "../src/runtime/shared.ts",
+    "fresh": "./src/mod.ts",
+    "fresh/compat": "./src/compat/mod.ts",
+    "fresh/dev": "./src/dev/mod.ts",
+    "fresh/runtime": "./src/runtime/shared.ts",
     "github-slugger": "npm:github-slugger@^2.0.0",
     "marked": "npm:marked@^14.1.2",
     "marked-mangle": "npm:marked-mangle@^1.1.9",
