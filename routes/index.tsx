@@ -34,17 +34,7 @@ export const handler = define.handlers({
     ctx.state.ogImage = new URL(asset("/og-image.webp"), ctx.url).href;
 
     return page();
-  },
-  async POST(ctx) {
-    const headers = new Headers();
-    const form = await ctx.req.formData();
-    const treat = form.get("treat");
-    headers.set("location", `/thanks?vote=${treat}`);
-    return new Response(null, {
-      status: 303,
-      headers,
-    });
-  },
+  }
 });
 
 export default define.page<typeof handler>(function MainPage(props) {

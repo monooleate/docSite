@@ -150,10 +150,12 @@ export default define.page<typeof handler>(function DocsPage(props) {
   const { html, headings } = renderMarkdown(page.markdown);
 
   return (
-    <div class="flex flex-col min-h-screen mx-auto max-w-screen-2xl">
+    <div class="flex flex-col min-h-screen mx-auto md:max-w-[1500px]">
       <Header title="docs" active="/docs" />
       <div f-client-nav={true}>
-        {/* <Partial name="nav-side"> */}
+        {/* <Partial name="nav-side"> 
+        Table of Content for Mobile
+        */}
         <MobileSidebar page={page} url={url.toString()} />
         <div class="flex mx-auto max-w-screen-2xl px-0 md:px-4 md:py-0 justify-start">
           <label
@@ -183,6 +185,7 @@ export default define.page<typeof handler>(function DocsPage(props) {
               <SearchButton class="mr-4 sm:mr-0" />
               <ul class="list-inside font-semibold nested ml-2.5 bg-lightBackground text-lightText dark:bg-darkBackground dark:text-darkText">
                 {CATEGORIES[page.version].map((category) => (
+                  /* Table of Content */
                   <SidebarCategory
                     key={category.href}
                     category={category}
@@ -197,10 +200,11 @@ export default define.page<typeof handler>(function DocsPage(props) {
         <Partial name="docs-main">
           <div class="w-full min-w-0">
             <main class="lg:ml-[18rem] mt-4 min-w-0 mx-auto">
-              <div class="flex gap-6 md:gap-8 xl:gap-[8%] flex-col xl:flex-row md:mx-8 lg:mx-16 2xl:mx-0 lg:justify-end">
+              <div class="flex gap-6 md:gap-4 xl:gap-[6%] flex-col xl:flex-row md:mx-8 lg:mx-16 lg:justify-end">
+                {/* "On this page" section */}
                 <TableOfContents headings={headings} />
 
-                <div class="lg:order-1 min-w-0 max-w-3xl w-full bg-lightBackground text-lightText dark:bg-darkBackground dark:text-darkText">
+                <div class="lg:order-1 mx-auto min-w-0 max-w-3xl w-full bg-lightBackground text-lightText dark:bg-darkBackground dark:text-darkText">
                   <h1 class="text-4xl text-gray-900 tracking-tight font-bold md:mt-0 px-4 md:px-0 mb-4 dark:bg-darkBackground dark:text-darkText">
                     {page.title}
                   </h1>
@@ -233,12 +237,12 @@ export default define.page<typeof handler>(function DocsPage(props) {
                   </div>
                 </div>
               </div>
-              <div class="xl:ml-[3.75rem]">
-                <Footer />
-              </div>
             </main>
           </div>
         </Partial>
+        <div class="xl:ml-[3.75rem]">
+          <Footer />
+        </div>
       </div>
     </div>
   );
@@ -263,6 +267,7 @@ function MobileSidebar({ page, url }: { page: Page; url: string }) {
             <SearchButton class="mr-4 sm:mr-0" />
             <ul class="list-inside font-semibold nested ml-2.5">
               {CATEGORIES[page.version].map((category) => (
+                /* Table of Content */
                 <SidebarCategory
                   key={category.href}
                   category={category}

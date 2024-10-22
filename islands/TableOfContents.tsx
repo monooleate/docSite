@@ -101,6 +101,7 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
     >
       {headings.length > 0 && (
         <>
+        {/* For mobile */}
           <div class="xl:hidden mx-4 md:mx-0 mt-4 md:mt-0">
             <button
               id="toc-outline-btn"
@@ -136,16 +137,17 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
               </div>
             )}
           </div>
-          <div class="hidden xl:block xl:sticky xl:top-40">
+          {/* For desktop */}
+          <div class="hidden  xl:block xl:sticky xl:top-40">
             <div class="relative">
               <div
                 ref={refMarker}
-                class="marker w-[2px] bg-green-400 h-5 dark:bg-darkBackground dark:text-darkText absolute top-0 opacity-0 transition-all"
+                class="marker w-[2px] bg-green-400 h-7 dark:bg-darkBackground dark:text-darkText absolute top-0 opacity-0 transition-all"
               />
+              <div role="heading" aria-level={2} class="pb-3 pl-1 font-semibold">
+                On this page
+              </div>
               <div class="pl-4 border-l border-gray-250 text-[13px] leading-7">
-                <div role="heading" aria-level={2} class="font-semibold">
-                  On this page
-                </div>
                 <nav aria-labelledby="doc-outline-aria-label">
                   <span id="doc-outline-aria-label" class="sr-only">
                     Table of Contents for current page
@@ -153,10 +155,10 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
                   <ul>
                     {headings.map((heading) => {
                       return (
-                        <li key={heading.id}>
+                        <li key={heading.id} class="pb-3">
                           <a
                             href={`#${heading.id}`}
-                            class="block truncate transition-colors bg-lightBackground text-lightText dark:bg-darkBackground dark:text-darkText [&.active]:text-green-600"
+                            class="block text-base truncate transition-colors bg-lightBackground text-lightText dark:bg-darkBackground dark:text-darkText [&.active]:text-green-600"
                             onClick={() => {
                               setActiveLink(
                                 ref.current!,
