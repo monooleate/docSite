@@ -1,4 +1,4 @@
-import toc from "../../docs/toc.ts";
+import toc from "../docs/toc.ts";
 
 export interface TableOfContentsEntry {
   slug: string;

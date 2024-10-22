@@ -11,7 +11,7 @@ import {
   type TableOfContentsEntry,
 } from "../../data/docs.ts";
 import { frontMatter, renderMarkdown } from "../../utils/markdown.ts";
-import toc from "../../../docs/toc.ts";
+import toc from "../../docs/toc.ts";
 import { TableOfContents } from "../../islands/TableOfContents.tsx";
 import SearchButton from "../../islands/SearchButton.tsx";
 import { define } from "../../utils/state.ts";
@@ -118,7 +118,7 @@ export const handler = define.handlers<Data>({
     }
 
     // Parse markdown front matter
-    const url = new URL(`../../../${entry.file}`, import.meta.url);
+    const url = new URL(`../../${entry.file}`, import.meta.url);
     const fileContent = await Deno.readTextFile(url);
     const { body, attrs } = frontMatter<Record<string, unknown>>(fileContent);
 

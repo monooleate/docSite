@@ -1,5 +1,5 @@
 import { define } from "../utils/state.ts";
-import VERSIONS from "../../versions.json" with { type: "json" };
+import VERSIONS from "../versions.json" with { type: "json" };
 
 export const handler = define.handlers({
   GET({ req }) {

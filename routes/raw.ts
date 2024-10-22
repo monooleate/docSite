@@ -1,6 +1,6 @@
 import type { RouteConfig } from "fresh";
 import { format, parse } from "@std/semver";
-import VERSIONS from "../../versions.json" with { type: "json" };
+import VERSIONS from "../versions.json" with { type: "json" };
 import { extname } from "@std/path";
 import { define } from "../utils/state.ts";
 
