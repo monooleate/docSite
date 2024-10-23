@@ -12,8 +12,8 @@ export default function Header(
         "mx-auto flex gap-3 items-center bg-lightBackground text-lightText dark:bg-darkBackground dark:text-darkText",
         isHome ? "justify-end" : "justify-between",
         isDocs
-          ? "h-20 max-w-screen-2xl w-full sticky top-0 bg-white/75 z-50 backdrop-blur-sm"
-          : "h-20 max-w-screen-xl",
+          ? "h-16 max-w-screen-2xl w-full lg:sticky top-0 bg-white/75 z-50 backdrop-blur-sm"
+          : "h-16 max-w-screen-xl",
       ].join(" ")}
       f-client-nav={false}
     >

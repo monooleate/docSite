@@ -154,30 +154,35 @@ export default define.page<typeof handler>(function DocsPage(props) {
       <Header title="docs" active="/docs" />
       <div f-client-nav={true}>
         {/* <Partial name="nav-side"> 
-        Table of Content for Mobile
+        Table of Content for Mobilepop-up and fixed to left side
         */}
         <MobileSidebar page={page} url={url.toString()} />
-        <div class="flex mx-auto max-w-screen-2xl px-0 md:px-4 md:py-0 justify-start">
+        {/* icon to open menu */}
+        <div class="bg-white/75 flex sticky top-0 xl:hidden mx-2 md:mx-auto max-w-screen-2xl px-0 md:px-4 md:py-0 justify-between lg:hidden">
           <label
             for="docs_sidebar"
             class="px-4 py-3 lg:hidden flex items-center hover:bg-gray-100 dark:hover:bg-gray-800 rounded gap-2 cursor-pointer"
           >
-            <svg
-              class="h-6 w-6"
-              stroke="currentColor"
-              fill="none"
-              viewBox="0 0 24 24"
+          <svg
+            class="h-6 w-6"
+            stroke="currentColor"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 6h16M4 12h16M4 18h7"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16M4 18h7"
-              >
-              </path>
-            </svg>
-            <div>Table of Contents</div>
+            </path>
+          </svg>
+          <div>Menu</div>
           </label>
+          <Partial name="page-content">
+          {/* "On this page" section */}
+          <TableOfContents headings={headings} />
+          </Partial>
         </div>
         <nav class="flex-shrink-0 hidden lg:block lg:px-4 bg-white">
           <div class="fixed top-24 w-[17rem] flex overflow-hidden">
@@ -199,12 +204,13 @@ export default define.page<typeof handler>(function DocsPage(props) {
         {/* </Partial> */}
         <Partial name="docs-main">
           <div class="w-full min-w-0">
-            <main class="lg:ml-[18rem] mt-4 min-w-0 mx-auto">
-              <div class="flex gap-6 md:gap-4 xl:gap-[6%] flex-col xl:flex-row md:mx-8 lg:mx-16 lg:justify-end">
+            <main class="lg:ml-[18rem] min-w-0 mx-2 md:mx-auto">
+              <div class="flex gap-6 md:gap-4 xl:gap-[6%] flex-col xl:flex-row-reverse md:mx-8 lg:mx-12 lg:justify-end">
                 {/* "On this page" section */}
-                <TableOfContents headings={headings} />
-
-                <div class="lg:order-1 mx-auto min-w-0 max-w-3xl w-full bg-lightBackground text-lightText dark:bg-darkBackground dark:text-darkText">
+                <div class="hidden lg:flex justify-end sticky top-14">
+                  <TableOfContents headings={headings} />
+                </div>
+                <div class="lg:order-1 mx-auto min-w-0 max-w-2xl w-full bg-lightBackground text-lightText dark:bg-darkBackground dark:text-darkText">
                   <h1 class="text-4xl text-gray-900 tracking-tight font-bold md:mt-0 px-4 md:px-0 mb-4 dark:bg-darkBackground dark:text-darkText">
                     {page.title}
                   </h1>

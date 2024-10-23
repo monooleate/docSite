@@ -18,6 +18,7 @@
   font-display: swap;
 }
 
+
 body {
   font-family:
     Fixel,
@@ -59,11 +60,13 @@ h6 {
   font-weight: 750;
 }
 
-summary::before {
-  content: "▶";
-  display: inline-block;
-  margin-right: 0.5em;
-  transition: transform 0.2s;
+@media (min-width: 768px) {
+  summary::before {
+    content: "▶";
+    display: inline-block;
+    margin-right: 0.5em;
+    transition: transform 0.2s;
+  }  
 }
 
 details {

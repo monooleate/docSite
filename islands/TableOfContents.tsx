@@ -97,16 +97,16 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
   return (
     <div
       ref={ref}
-      class="relative xl:order-2 w-56 xl:max-w-xs xl:top-14 shrink-0"
+      class="xl:order-2 w-48 xl:max-w-xs xl:top-14 shrink-0"
     >
       {headings.length > 0 && (
         <>
         {/* For mobile */}
-          <div class="xl:hidden mx-4 md:mx-0 mt-4 md:mt-0">
+          <div class="xl:hidden my-2">
             <button
               id="toc-outline-btn"
               onClick={() => setIsOpen((v) => !v)}
-              class="bg-gray-100 py-2 px-4 rounded border border-gray-300 flex items-center hover:border-green-600 transition-colors text-sm"
+              class="bg-gray-100 dark:bg-darkBackground dark:text-darkText py-2 px-4 rounded border border-gray-300 flex items-center hover:border-green-600 transition-colors text-sm"
             >
               On this page
               <svg
@@ -118,15 +118,25 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
               </svg>
             </button>
             {isOpen && (
-              <div class="mt-2 pl-4 border-l border-gray-250 text-[13px] leading-7">
+              <div class="absolute truncate top-[48px] left-3/4 w-72 transform -translate-x-1/2 bg-white rounded-lg shadow dark:bg-gray-700 mt-2 px-4 border-b border-gray-250 text-[16px] leading-10">
                 <nav aria-labelledby="toc-outline-btn">
                   <ul>
+                    <li>
+                      <a
+                        href={`#`}
+                        class="block border-b border-gray-250 bg-lightBackground text-lightText dark:bg-darkBackground dark:text-darkText"
+                        onClick={() => setIsOpen((v) => !v)}
+                      >
+                        Return to top
+                      </a>
+                    </li>
                     {headings.map((heading) => {
                       return (
                         <li key={heading.id}>
                           <a
                             href={`#${heading.id}`}
                             class="block bg-lightBackground text-lightText  dark:bg-darkBackground dark:text-darkText"
+                            onClick={() => setIsOpen((v) => !v)}
                             dangerouslySetInnerHTML={{ __html: heading.html }}
                           />
                         </li>
@@ -138,7 +148,7 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
             )}
           </div>
           {/* For desktop */}
-          <div class="hidden  xl:block xl:sticky xl:top-40">
+          <div class="hidden xl:block xl:sticky xl:top-28">
             <div class="relative">
               <div
                 ref={refMarker}
