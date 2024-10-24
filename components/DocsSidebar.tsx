@@ -19,7 +19,7 @@ export function SidebarCategory(props: {
       class={entries.length === 0
         ? "no-content"
         : ""} /* it is question weather needed or not */
-    >
+    > 
       <summary class="my-2 block bg-lightBackground text-lightText dark:bg-darkBackground dark:text-darkText">
         <a
           href={href}

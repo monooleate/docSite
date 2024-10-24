@@ -25,7 +25,7 @@ export default {
         lightBackground: "#ffffff",
         darkBackground: "#1e1e1e",
         lightText: "#1e1e1e",
-        darkText: "#ffffff",
+        darkText: "#d5d5ebc7", 
         primaryLight: "#007aff",
         primaryDark: "#0d6efd",
       },

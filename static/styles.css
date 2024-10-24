@@ -60,14 +60,18 @@ h6 {
   font-weight: 750;
 }
 
-@media (min-width: 768px) {
-  summary::before {
-    content: "▶";
-    display: inline-block;
-    margin-right: 0.5em;
-    transition: transform 0.2s;
-  }  
+summary {
+  list-style: none; /* Remove browser's default arrow/triangle */
 }
+
+
+summary::before {
+  content: "▶";
+  display: inline-block;
+  margin-right: 0.5em;
+  transition: transform 0.2s;
+}  
+
 
 details {
   border-top: 1px solid #ccc; /* Adjust color and width as needed */
@@ -75,13 +79,15 @@ details {
   margin-top: 10px; /* Optional: spacing between details elements */
 }
 
+
 details[open] summary::before {
   transform: rotate(90deg);
 }
 
+/* 
 details.no-content summary::marker {
   content: "";
   color: gray;
   font-style: italic;
-}
+} */
 

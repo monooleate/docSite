@@ -9,20 +9,23 @@ export default function Header(
   return (
     <header
       class={[
-        "mx-auto flex gap-3 items-center bg-lightBackground text-lightText dark:bg-darkBackground dark:text-darkText",
+        "mx-auto flex gap-3 items-center bg-lightBackground text-lightText dark:bg-gray-800/75 dark:text-darkText",
         isHome ? "justify-end" : "justify-between",
         isDocs
-          ? "h-16 max-w-screen-2xl w-full lg:sticky top-0 bg-white/75 z-50 backdrop-blur-sm"
-          : "h-16 max-w-screen-xl",
+          ? "h-16 w-screen lg:fixed lg:left-0 top-0 bg-white/75 z-50 backdrop-blur-sm"
+          : "h-16 w-screen ",
       ].join(" ")}
       f-client-nav={false}
     >
-      {!isHome && (
-        <div class="p-4 flex items-center">
-          <Logo />
-        </div>
-      )}
-      <NavigationBar class="" active={props.active} />
+      <div class="w-full max-w-[1500px] mx-auto flex justify-between items-center">
+        {!isHome && (
+          <div class="ml-4">
+            <Logo />
+          </div>
+        )}
+      
+        <NavigationBar class="mr-4" active={props.active} />
+      </div>
     </header>
   );
 }

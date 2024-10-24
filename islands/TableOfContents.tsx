@@ -97,7 +97,7 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
   return (
     <div
       ref={ref}
-      class="xl:order-2 w-48 xl:max-w-xs xl:top-14 shrink-0"
+      class="xl:order-2 w-36 lg:w-48 xl:max-w-xs xl:top-14 shrink-0"
     >
       {headings.length > 0 && (
         <>
@@ -152,7 +152,7 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
             <div class="relative">
               <div
                 ref={refMarker}
-                class="marker w-[2px] bg-green-400 h-7 dark:bg-darkBackground dark:text-darkText absolute top-0 opacity-0 transition-all"
+                class="marker w-[2px] bg-green-400 h-7 dark:text-darkText absolute top-0 opacity-0 transition-all"
               />
               <div role="heading" aria-level={2} class="pb-3 pl-1 font-semibold">
                 On this page

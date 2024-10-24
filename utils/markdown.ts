@@ -14,16 +14,54 @@ import { escape as escapeHtml } from "@std/html";
 import { mangle } from "marked-mangle";
 import GitHubSlugger from "github-slugger";
 
-const slugger = new GitHubSlugger();
-
-Marked.marked.use(mangle());
-
-const ADMISSION_REG = /^\[(info|warn|tip)\]:\s/;
-
 export interface MarkdownHeading {
   id: string;
   html: string;
 }
+
+// Define the custom token type for the FAQ extension
+interface FAQToken extends Marked.Tokens.Generic {
+  type: 'faq';
+  question: string;
+  answer: string;
+}
+
+// Define the custom extension for FAQs in TypeScript
+const faqExtension: Marked.TokenizerAndRendererExtension = {
+  name: 'faq',
+  level: 'block', // Set level to "block" (the required type)
+  start(src: string) {
+    return src.indexOf('::: faq'); // Look for the start of an FAQ block
+  },
+  tokenizer(src: string) {
+    const rule = /^::: faq (.+?)\n([\s\S]+?)\n:::/; // Match ::: faq <question>\n<answer>\n:::
+    const match = rule.exec(src);
+    if (match) {
+      return {
+        type: 'faq', // Token type to handle in the renderer
+        raw: match[0], // The entire matched content
+        question: match[1].trim(), // Extract the question
+        answer: match[2].trim(), // Extract the answer
+      } as FAQToken;
+    }
+  },
+  renderer(this: Marked.RendererThis, token: Marked.Tokens.Generic) {
+    // Check if the token is of type 'faq'
+    if (token.type === 'faq') {
+      const faqToken = token as FAQToken;
+      // Render the question as <summary> and the answer as <p> inside <details>
+      return `<details>\n<summary>${faqToken.question}</summary>\n<p>${faqToken.answer}</p>\n</details>`;
+    }
+    return ''; // Default return if not 'faq' token
+  }
+};
+
+
+Marked.marked.use({ extensions: [faqExtension] });
+Marked.marked.use(mangle());
+
+const slugger = new GitHubSlugger();
+const ADMISSION_REG = /^\[(info|warn|tip)\]:\s/;
 
 class DefaultRenderer extends Marked.Renderer {
   headings: MarkdownHeading[] = [];

@@ -145,8 +145,13 @@ export const handler = define.handlers<Data>({
 export default define.page<typeof handler>(function DocsPage(props) {
   /*   console.log(`Headings: ${JSON.stringify(props)}`); */
   const { page } = props.data;
+  /* console.log(`frontMatter_attr: ${page.data}`); */
   const { url } = props;
-  /* console.log(url.toString()); */
+  const publishDate: Date | undefined = page.data.published_at ? new Date(String(page.data.published_at)) : undefined  // ISO formatted date string
+ 
+/*   console.log(`published_at: ${page.data.published_at}`);
+  console.log(`publishDate: ${publishDate}`); */
+
   const { html, headings } = renderMarkdown(page.markdown);
 
   return (
@@ -158,7 +163,7 @@ export default define.page<typeof handler>(function DocsPage(props) {
         */}
         <MobileSidebar page={page} url={url.toString()} />
         {/* icon to open menu */}
-        <div class="bg-white/75 flex sticky top-0 xl:hidden mx-2 md:mx-auto max-w-screen-2xl px-0 md:px-4 md:py-0 justify-between lg:hidden">
+        <div class="bg-white/75 dark:bg-gray-800/75 flex sticky top-0 xl:hidden mx-2 md:mx-auto max-w-screen-2xl px-0 md:px-4 md:py-0 justify-between lg:hidden">
           <label
             for="docs_sidebar"
             class="px-4 py-3 lg:hidden flex items-center hover:bg-gray-100 dark:hover:bg-gray-800 rounded gap-2 cursor-pointer"
@@ -180,15 +185,17 @@ export default define.page<typeof handler>(function DocsPage(props) {
           <div>Menu</div>
           </label>
           <Partial name="page-content">
-          {/* "On this page" section */}
-          <TableOfContents headings={headings} />
+            <aside>
+              {/* "On this page" section */}
+              <TableOfContents headings={headings} />
+            </aside>
           </Partial>
         </div>
         <nav class="flex-shrink-0 hidden lg:block lg:px-4 bg-white">
           <div class="fixed top-24 w-[17rem] flex overflow-hidden">
             <div class="flex-1 h-[calc(100vh_-_6rem)] overflow-y-auto pb-8">
               <SearchButton class="mr-4 sm:mr-0" />
-              <ul class="list-inside font-semibold nested ml-2.5 bg-lightBackground text-lightText dark:bg-darkBackground dark:text-darkText">
+              <div class="list-inside font-semibold nested ml-2.5 bg-lightBackground text-lightText dark:bg-darkBackground dark:text-darkText">
                 {CATEGORIES[page.version].map((category) => (
                   /* Table of Content */
                   <SidebarCategory
@@ -197,19 +204,19 @@ export default define.page<typeof handler>(function DocsPage(props) {
                     url={url.toString()}
                   />
                 ))}
-              </ul>
+              </div>
             </div>
           </div>
         </nav>
         {/* </Partial> */}
         <Partial name="docs-main">
           <div class="w-full min-w-0">
-            <main class="lg:ml-[18rem] min-w-0 mx-2 md:mx-auto">
+            <main class="lg:ml-[18rem] xl:mt-24 min-w-0 mt-4 mx-2 md:mx-auto">
               <div class="flex gap-6 md:gap-4 xl:gap-[6%] flex-col xl:flex-row-reverse md:mx-8 lg:mx-12 lg:justify-end">
                 {/* "On this page" section */}
-                <div class="hidden lg:flex justify-end sticky top-14">
+                <aside class="hidden lg:flex justify-end sticky top-14">
                   <TableOfContents headings={headings} />
-                </div>
+                </aside>
                 <div class="lg:order-1 mx-auto min-w-0 max-w-2xl w-full bg-lightBackground text-lightText dark:bg-darkBackground dark:text-darkText">
                   <h1 class="text-4xl text-gray-900 tracking-tight font-bold md:mt-0 px-4 md:px-0 mb-4 dark:bg-darkBackground dark:text-darkText">
                     {page.title}
@@ -218,6 +225,17 @@ export default define.page<typeof handler>(function DocsPage(props) {
                     class="markdown-body mb-8"
                     dangerouslySetInnerHTML={{ __html: html }}
                   />
+
+                  {publishDate && (<div class="flex justify-end w-full">
+                    <span class="mr-2">Created at:</span>
+                    <time class="text-gray-500">
+                      {publishDate.toLocaleDateString("en-us", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })}
+                    </time>
+                  </div>)}
 
                   <div class="mb-8">
                     <ForwardBackButtons
@@ -229,17 +247,9 @@ export default define.page<typeof handler>(function DocsPage(props) {
                   </div>
                   <hr />
                   <div class="px-4 md:px-0 flex justify-between my-6">
-                    <a
-                      href={`https://github.com/denoland/fresh/edit/main/${page.file}`}
-                      class="text-green-600 underline flex items-center"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <svg class="w-4 h-4 inline-block mr-1">
-                        <use href="/icons.svg#external" />
-                      </svg>
-                      Edit this page on GitHub
-                    </a>
+
+                      Placeholder
+
                   </div>
                 </div>
               </div>

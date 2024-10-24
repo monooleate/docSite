@@ -1,8 +1,13 @@
 ---
-description: |
+description:
   Fresh is a full stack modern web framework for JavaScript and TypeScript
   developers, designed to make it trivial to create high-quality, performant,
   and personalized web applications.
+title: 
+keywords:
+published_at: 2024-10-08T20:00:00.000Z
+blurb: This is a must-read blog post.
+
 ---
 
 Fresh is a full stack modern web framework for JavaScript and TypeScript
@@ -24,9 +29,32 @@ necessary transpilation of TypeScript or JSX to plain JavaScript is done on the
 fly, just when it is needed. This allows for insanely fast iteration loops and
 very very fast deployments.
 
+> [info]: The `name` prop of the `<Partial>` component is expected to be unique
+> among Partials. That's how Fresh knows which parts of the response need to go
+> on the current page.
+
+> [warn]: The `name` prop of the `<Partial>` component is expected to be unique
+> among Partials. That's how Fresh knows which parts of the response need to go
+> on the current page.
+
+> [tip]: The `name` prop of the `<Partial>` component is expected to be unique
+> among Partials. That's how Fresh knows which parts of the response need to go
+> on the current page.
+
 Fresh projects can be deployed manually to any platform with [Deno][deno], but
 it is intended to be deployed to an edge runtime like [Deno Deploy][deno-deploy]
 for the best experience.
+
+
+## Frequently Asked Questions
+
+::: faq What is the return policy?
+Our return policy allows returns within 30 days of purchase.
+:::
+
+::: faq How long does shipping take?
+Shipping typically takes 3-5 business days.
+:::
 
 Some stand out features:
 
