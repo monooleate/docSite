@@ -72,11 +72,15 @@ summary::before {
   transition: transform 0.2s;
 }   */
 
-
 details {
   border-top: 1px solid #ccc; /* Adjust color and width as needed */
   padding-top: 10px; /* Optional: space between the border and content */
   margin-top: 10px; /* Optional: spacing between details elements */
+}
+
+/* Hide the default disclosure marker */
+details summary::-webkit-details-marker {
+  display: none;
 }
 
 details summary::before {
