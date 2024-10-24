@@ -79,6 +79,14 @@ details {
   margin-top: 10px; /* Optional: spacing between details elements */
 }
 
+details summary::before {
+  content: "\25B6"; /* Right arrow */
+  padding-right: 5px;
+}
+
+details[open] summary::before {
+  content: "\25BC"; /* Down arrow */
+}
 
 /* details[open] summary::before {
   transform: rotate(90deg);

@@ -15,20 +15,17 @@ export function SidebarCategory(props: {
       open={(isSummaryOpened(title, props.url) || entries.length === 0)
         ? true
         : false}
-      class={entries.length === 0
-        ? "no-content"
-        : ""} /* it is question weather needed or not */
     > 
-      <summary class="my-2 block bg-lightBackground text-lightText dark:bg-darkBackground dark:text-darkText">
+      <summary class="my-2 block">
         <a
           href={href}
-          class="bg-lightBackground text-lightText dark:bg-darkBackground dark:text-darkText hover:text-gray-600 aria-[current]:text-green-700 aria-[current]:hover:underline font-bold"
+          class="hover:text-gray-600 aria-[current]:text-green-700 aria-[current]:hover:underline font-bold"
         >
           {title}
         </a>
       </summary>
       {entries.length > 0 && (
-        <ul class="ml-2 border-l border-gray-250 bg-lightBackground text-lightText dark:bg-darkBackground dark:text-darkText py-2 nested list-outside">
+        <ul class="ml-2 border-l border-gray-250 py-2">
           {entries.map((entry) => (
             <SidebarEntry key={entry.href} entry={entry} />
           ))}
@@ -44,7 +41,7 @@ export function SidebarEntry(props: {
   const { title, href } = props.entry;
 
   return (
-    <li class="py-[1px] bg-lightBackground text-lightText dark:bg-darkBackground dark:text-darkText">
+    <li class="py-[1px]">
       <a
         href={href}
         class="aria-[current]:text-green-700 aria-[current]:border-green-600 aria-[current]:bg-green-50 border-l-4 border-transparent px-4 py-0.5 transition-colors hover:text-green-500 font-normal block"

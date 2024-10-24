@@ -196,7 +196,7 @@ export default define.page<typeof handler>(function DocsPage(props) {
             <div class="fixed top-24 w-[17rem] flex overflow-hidden">
               <div class="flex-1 h-[calc(100vh_-_6rem)] overflow-y-auto pb-8">
                 <SearchButton class="mr-4 sm:mr-0" />
-                <div class="list-inside font-semibold nested ml-2.5 bg-lightBackground text-lightText dark:bg-darkBackground dark:text-darkText">
+                <div class="font-semibold ml-2.5 bg-lightBackground text-lightText dark:bg-darkBackground dark:text-darkText">
                   {CATEGORIES[page.version].map((category) => (
                     /* Table of Content */
                     <SidebarCategory
@@ -249,9 +249,7 @@ export default define.page<typeof handler>(function DocsPage(props) {
                   </div>
                   <hr />
                   <div class="px-4 md:px-0 flex justify-between my-6">
-
                       Placeholder
-
                   </div>
                 </div>
               </div>
@@ -282,7 +280,7 @@ function MobileSidebar({ page, url }: { page: Page; url: string }) {
         <div class="relative flex-1 flex flex-col w-[18rem] h-full border-r-2 border-gray-100 bg-lightBackground text-lightText dark:bg-darkBackground dark:text-darkText">
           <nav class="pb-16 overflow-x-auto flex-1 h-screen overflow-y-auto pt-4 px-4">
             <SearchButton class="mr-4 sm:mr-0" />
-            <div class="list-inside font-semibold nested ml-2.5">
+            <div class="font-semibold ml-2.5">
               {CATEGORIES[page.version].map((category) => (
                 /* Table of Content */
                 <SidebarCategory
