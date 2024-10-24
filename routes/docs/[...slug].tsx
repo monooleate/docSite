@@ -191,23 +191,25 @@ export default define.page<typeof handler>(function DocsPage(props) {
             </aside>
           </Partial>
         </div>
-        <nav class="flex-shrink-0 hidden lg:block lg:px-4 bg-white">
-          <div class="fixed top-24 w-[17rem] flex overflow-hidden">
-            <div class="flex-1 h-[calc(100vh_-_6rem)] overflow-y-auto pb-8">
-              <SearchButton class="mr-4 sm:mr-0" />
-              <div class="list-inside font-semibold nested ml-2.5 bg-lightBackground text-lightText dark:bg-darkBackground dark:text-darkText">
-                {CATEGORIES[page.version].map((category) => (
-                  /* Table of Content */
-                  <SidebarCategory
-                    key={category.href}
-                    category={category}
-                    url={url.toString()}
-                  />
-                ))}
+        <div f-client-nav={true}>
+          <nav class="flex-shrink-0 hidden lg:block lg:px-4 bg-white">
+            <div class="fixed top-24 w-[17rem] flex overflow-hidden">
+              <div class="flex-1 h-[calc(100vh_-_6rem)] overflow-y-auto pb-8">
+                <SearchButton class="mr-4 sm:mr-0" />
+                <div class="list-inside font-semibold nested ml-2.5 bg-lightBackground text-lightText dark:bg-darkBackground dark:text-darkText">
+                  {CATEGORIES[page.version].map((category) => (
+                    /* Table of Content */
+                    <SidebarCategory
+                      key={category.href}
+                      category={category}
+                      url={url.toString()}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-        </nav>
+          </nav>
+        </div>
         {/* </Partial> */}
         <Partial name="docs-main">
           <div class="w-full min-w-0">
@@ -271,7 +273,6 @@ function MobileSidebar({ page, url }: { page: Page; url: string }) {
         type="checkbox"
         class="hidden toggle"
         id="docs_sidebar"
-        autocomplete="off"
       />
       <div class="fixed inset-0 z-50 hidden toggled">
         <label
@@ -281,7 +282,7 @@ function MobileSidebar({ page, url }: { page: Page; url: string }) {
         <div class="relative flex-1 flex flex-col w-[18rem] h-full border-r-2 border-gray-100 bg-lightBackground text-lightText dark:bg-darkBackground dark:text-darkText">
           <nav class="pb-16 overflow-x-auto flex-1 h-screen overflow-y-auto pt-4 px-4">
             <SearchButton class="mr-4 sm:mr-0" />
-            <ul class="list-inside font-semibold nested ml-2.5">
+            <div class="list-inside font-semibold nested ml-2.5">
               {CATEGORIES[page.version].map((category) => (
                 /* Table of Content */
                 <SidebarCategory
@@ -290,7 +291,7 @@ function MobileSidebar({ page, url }: { page: Page; url: string }) {
                   url={url.toString()}
                 />
               ))}
-            </ul>
+            </div>
           </nav>
         </div>
       </div>

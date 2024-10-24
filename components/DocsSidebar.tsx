@@ -15,7 +15,6 @@ export function SidebarCategory(props: {
       open={(isSummaryOpened(title, props.url) || entries.length === 0)
         ? true
         : false}
-      name={title}
       class={entries.length === 0
         ? "no-content"
         : ""} /* it is question weather needed or not */
