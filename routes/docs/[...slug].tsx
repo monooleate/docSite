@@ -182,7 +182,7 @@ export default define.page<typeof handler>(function DocsPage(props) {
             >
             </path>
           </svg>
-          <div>Menu</div>
+          Menu
           </label>
           <Partial name="page-content">
             <aside>

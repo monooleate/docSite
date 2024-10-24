@@ -60,8 +60,8 @@ h6 {
   font-weight: 750;
 }
 
-summary {
-  list-style: none; /* Remove browser's default arrow/triangle */
+/* summary {
+  list-style: none; /* Remove browser's default arrow/triangle 
 }
 
 
@@ -70,7 +70,7 @@ summary::before {
   display: inline-block;
   margin-right: 0.5em;
   transition: transform 0.2s;
-}  
+}   */
 
 
 details {
@@ -80,9 +80,9 @@ details {
 }
 
 
-details[open] summary::before {
+/* details[open] summary::before {
   transform: rotate(90deg);
-}
+} */
 
 /* 
 details.no-content summary::marker {
