@@ -6,13 +6,13 @@ import "prismjs/components/prism-diff.js";
 import "prismjs/components/prism-json.js";
 import "prismjs/components/prism-bash.js";
 import "prismjs/components/prism-yaml.js";
-
-export { extractYaml as frontMatter } from "@std/front-matter";
-
+import katex from 'npm:katex';
 import * as Marked from "marked";
 import { escape as escapeHtml } from "@std/html";
 import { mangle } from "marked-mangle";
 import GitHubSlugger from "github-slugger";
+
+export { extractYaml as frontMatter } from "@std/front-matter";
 
 export interface MarkdownHeading {
   id: string;
@@ -55,7 +55,6 @@ const faqExtension: Marked.TokenizerAndRendererExtension = {
     return ''; // Default return if not 'faq' token
   }
 };
-
 
 Marked.marked.use({ extensions: [faqExtension] });
 Marked.marked.use(mangle());
@@ -135,16 +134,32 @@ class DefaultRenderer extends Marked.Renderer {
       </div>`;
     }
 
-    const grammar = lang && Object.hasOwnProperty.call(Prism.languages, lang)
-      ? Prism.languages[lang]
-      : undefined;
-
-    if (grammar === undefined) {
-      out += `<pre><code class="notranslate">${escapeHtml(text)}</code></pre>`;
+    // If the language is 'katex', render with KaTeX
+    if (lang === 'katex') {
+      try {
+        const renderedKaTeX = katex.renderToString(text, {
+          displayMode: true, 
+          throwOnError: false,
+          output: 'html', 
+          strict: 'ignore', 
+          minRuleThickness: 0.06, 
+        });
+        out += `<span class="katex">${renderedKaTeX}</span>`;
+      } catch (_error) {
+        out += `<pre><code class="notranslate">${escapeHtml(text)}</code></pre>`; // Fallback for KaTeX error
+      }
     } else {
-      const html = Prism.highlight(text, grammar, lang);
-      out +=
-        `<pre class="highlight highlight-source-${lang} notranslate lang-${lang}"><code>${html}</code></pre>`;
+      const grammar = lang && Object.hasOwnProperty.call(Prism.languages, lang)
+        ? Prism.languages[lang]
+        : undefined;
+
+      if (grammar === undefined) {
+        out += `<pre><code class="notranslate">${escapeHtml(text)}</code></pre>`;
+      } else {
+        const html = Prism.highlight(text, grammar, lang);
+        out +=
+          `<pre class="highlight highlight-source-${lang} notranslate lang-${lang}"><code>${html}</code></pre>`;
+      }
     }
 
     out += `</div>`;

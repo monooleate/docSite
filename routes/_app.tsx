@@ -39,6 +39,7 @@ export default define.page(function App({ Component, state, url }) {
             <>
               <link rel="stylesheet" href={asset("/docsearch.css")} />
               <link rel="stylesheet" href={asset("/markdown.css")} />
+              <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"/>
             </>
           )
           : null}

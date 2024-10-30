@@ -45,6 +45,59 @@ export default function AboutPage() {
 }
 ```
 
+```katex "Quadratic Formula"
+c = \pm\sqrt{a^2 + b^2} \\
+c = \pm\sqrt{a^2 + b^2}
+c = \pm\root{a^2 + b^2}\in\RR
+\\
+% \f is defined as #1f(#2) using the macro
+\f\relax{x} = \int_{-\infty}^\infty
+    \f\hat\xi\,e^{2 \pi i \xi x}
+    \,d\xi
+\\
+\\
+ % \f is defined as #1f(#2) using the macro
+\f\relax{x} = \int_{-\infty}^\infty
+    \f\hat\xi\,e^{2 \pi i \xi x}
+    \,d\xi
+c = \pm \sqrt{a^2 + b^2} \\
+E = mc^2
+\\
+n!
+\text \\{\AA}
+\\
+\argmin \\
+\Bbb{ABC}
+\\
+\begin{Bmatrix*}[r]
+   0 & -1 \\
+   -1 & 0
+\end{Bmatrix*}
+\\
+\begin{CD}
+   A @>a>> B \\
+@VbVV @AAcA \\
+   C @= D
+\end{CD}
+\\
+{CD}
+\overleftrightarrow{AB}
+\begin{alignat*}{2}
+   10&x+ &3&y = 2 \\
+   3&x+&13&y = 4
+\end{alignat*}
+```
+```katex "Quadratic Formula"
+$
+c = \pm\sqrt{a^2 + b^2} \\
+E = mc^2
+$
+```
+
+```javascript "Console Log"
+console.log('Hello, world!');
+```
+
 The new page will be visible at `http://localhost:8000/about`.
 
 <!-- You can find more in depth information about routes on the

@@ -23,11 +23,20 @@ export default {
       colors: {
         fresh: "#FFDB1E",
         lightBackground: "#ffffff",
-        darkBackground: "#1e1e1e",
+        darkBackground: "#28292A", /* "#1e1e1e" */
         lightText: "#1e1e1e",
-        darkText: "#d5d5ebc7", 
+        darkText: "#C7C7C7",  /* #d5d5ebc7 */
         primaryLight: "#007aff",
         primaryDark: "#0d6efd",
+      },
+      animation: {
+        rotate: "rotate 10s linear infinite",
+      },
+      keyframes: {
+        rotate: {
+          "0%": { transform: "rotate(0deg) scale(10)" },
+          "100%": { transform: "rotate(-360deg) scale(10)" },
+        },
       },
     },
   },

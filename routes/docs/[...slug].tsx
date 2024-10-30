@@ -157,41 +157,40 @@ export default define.page<typeof handler>(function DocsPage(props) {
   return (
     <div class="flex flex-col min-h-screen mx-auto md:max-w-[1500px]">
       <Header title="docs" active="/docs" />
+      
       <div f-client-nav={true}>
-        {/* <Partial name="nav-side"> 
-        Table of Content for Mobilepop-up and fixed to left side
-        */}
-        <MobileSidebar page={page} url={url.toString()} />
-        {/* icon to open menu */}
-        <div class="bg-white/75 dark:bg-gray-800/75 flex sticky top-0 xl:hidden mx-2 md:mx-auto max-w-screen-2xl px-0 md:px-4 md:py-0 justify-between lg:hidden">
-          <label
-            for="docs_sidebar"
-            class="px-4 py-3 lg:hidden flex items-center hover:bg-gray-100 dark:hover:bg-gray-800 rounded gap-2 cursor-pointer"
-          >
-          <svg
-            class="h-6 w-6"
-            stroke="currentColor"
-            fill="none"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h16M4 18h7"
+        <Partial name="nav-side">
+          <MobileSidebar page={page} url={url.toString()} />
+          {/* icon to open menu */}
+          <div class="bg-white/75 dark:bg-gray-800/75 flex sticky top-0 xl:hidden mx-2 md:mx-auto max-w-screen-2xl px-0 md:px-4 md:py-0 justify-between lg:hidden">
+            <label
+              for="docs_sidebar"
+              class="px-4 py-3 lg:hidden flex items-center hover:bg-gray-100 dark:hover:bg-gray-800 rounded gap-2 cursor-pointer"
             >
-            </path>
-          </svg>
-          Menu
-          </label>
-          <Partial name="page-content">
-            <aside>
-              {/* "On this page" section */}
-              <TableOfContents headings={headings} />
-            </aside>
-          </Partial>
-        </div>
-        <div f-client-nav={true}>
+            <svg
+              class="h-6 w-6"
+              stroke="currentColor"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h7"
+              >
+              </path>
+            </svg>
+            Menu
+            </label>
+            
+              <aside>
+                {/* "On this page" section */}
+                <TableOfContents headings={headings} />
+              </aside>
+            
+          </div>
+          
           <nav class="flex-shrink-0 hidden lg:block lg:px-4 bg-white">
             <div class="fixed top-24 w-[17rem] flex overflow-hidden">
               <div class="flex-1 h-[calc(100vh_-_6rem)] overflow-y-auto pb-8">
@@ -209,14 +208,14 @@ export default define.page<typeof handler>(function DocsPage(props) {
               </div>
             </div>
           </nav>
-        </div>
-        {/* </Partial> */}
+        </Partial>
+          
         <Partial name="docs-main">
           <div class="w-full min-w-0">
             <main class="lg:ml-[18rem] xl:mt-24 min-w-0 mt-4 mx-2 md:mx-auto">
               <div class="flex gap-6 md:gap-4 xl:gap-[6%] flex-col xl:flex-row-reverse md:mx-8 lg:mx-12 lg:justify-end">
                 {/* "On this page" section */}
-                <aside class="hidden lg:flex justify-end sticky top-14">
+                <aside class="hidden lg:flex justify-end sticky top-16">
                   <TableOfContents headings={headings} />
                 </aside>
                 <div class="lg:order-1 mx-auto min-w-0 max-w-2xl w-full bg-lightBackground text-lightText dark:bg-darkBackground dark:text-darkText">
@@ -238,7 +237,7 @@ export default define.page<typeof handler>(function DocsPage(props) {
                       })}
                     </time>
                   </div>)}
-
+                  <hr class="mt-4" />
                   <div class="mb-8">
                     <ForwardBackButtons
                       slug={page.slug}
@@ -250,15 +249,35 @@ export default define.page<typeof handler>(function DocsPage(props) {
                   <hr />
                   <div class="px-4 md:px-0 flex justify-between my-6">
                       Placeholder
+                    <div class="border-2 border-gray-800 shadow-[0_0_10px_5px_rgba(173,216,230,0.7)] rounded-md p-4">
+                      Your content here
+                    </div>
+                    <div>
+
+                    
+                    <div class="mx-auto flex w-full max-w-lg items-center justify-center">
+                      <div
+                        class="relative z-10 flex w-full cursor-pointer items-center overflow-hidden rounded-xl  border-slate-800 p-[1.5px]"
+                      >
+                        <div
+                          class="animate-rotate absolute inset-0 h-full w-full rounded-full bg-[conic-gradient(#0ea5e9_20deg,transparent_120deg)]"
+                        >
+                        </div>
+                        <div class="relative z-20 flex w-full rounded-[0.60rem] bg-slate-900 p-2">
+       
+                        </div>
+                      </div>
+                    </div>
+                      
+
+                    </div>
                   </div>
                 </div>
               </div>
             </main>
           </div>
         </Partial>
-        <div class="xl:ml-[3.75rem]">
-          <Footer />
-        </div>
+        <Footer />
       </div>
     </div>
   );
@@ -311,12 +330,12 @@ function ForwardBackButtons(props: {
         ? (
           <a
             href={prev.href}
-            class="px-4 py-2 text-left rounded border border-gray-200 grid border-solid w-full hover:border-green-600 transition-colors"
+            class="px-4 py-2 text-left rounded-lg border border-gray-200 dark:border-gray-500 grid border-solid w-full hover:border-green-600 transition-colors"
           >
-            <span class="text-sm text-gray-600">
+            <span class="text-sm text-gray-600 dark:text-gray-400">
               Previous page
             </span>
-            <span class="text-green-600 font-medium">
+            <span class="text-indigo-600 dark:text-indigo-300 font-medium">
               {prev.title}
             </span>
           </a>
@@ -326,12 +345,12 @@ function ForwardBackButtons(props: {
         ? (
           <a
             href={next.href}
-            class="px-4 py-2 text-right rounded border border-gray-200 border-solid grid w-full hover:border-green-600 transition-colors"
+            class="px-4 py-2 text-right rounded-lg border-[0.5px] border-gray-200 dark:border-gray-500 border-solid grid w-full hover:border-green-600 transition-colors"
           >
-            <span class="text-sm text-gray-600">
+            <span class="text-sm text-gray-600 dark:text-gray-400">
               Next page
             </span>
-            <span class="text-green-600 font-medium">
+            <span class="dark:text-green-400 text-green-800 font-medium">
               {next.title}
             </span>
           </a>

@@ -9,7 +9,7 @@ export default function Header(
   return (
     <header
       class={[
-        "mx-auto flex gap-3 items-center bg-lightBackground text-lightText dark:bg-gray-800/75 dark:text-darkText",
+        "mx-auto flex gap-3 items-center bg-lightBackground text-lightText dark:bg-[#46484E]/75 dark:text-darkText",
         isHome ? "justify-end" : "justify-between",
         isDocs
           ? "h-16 w-screen lg:fixed lg:left-0 top-0 bg-white/75 z-50 backdrop-blur-sm"

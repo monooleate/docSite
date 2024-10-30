@@ -99,6 +99,10 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
       ref={ref}
       class="xl:order-2 w-36 lg:w-48 xl:max-w-xs xl:top-14 shrink-0"
     >
+      {headings.length === 0 && (
+        <div class="mt-16">
+        </div>
+      )}
       {headings.length > 0 && (
         <>
         {/* For mobile */}
@@ -118,33 +122,46 @@ export function TableOfContents({ headings }: TableOfContentsProps) {
               </svg>
             </button>
             {isOpen && (
-              <div class="absolute truncate top-[48px] left-3/4 w-72 transform -translate-x-1/2 bg-white rounded-lg shadow dark:bg-gray-700 mt-2 px-4 border-b border-gray-250 text-[16px] leading-10">
+              <div class="absolute top-[46px] left-1/2 md:left-3/4 w-72 transform -translate-x-1/2 bg-gray-200 rounded-lg dark:bg-gray-700 text-[16px] leading-10">
                 <nav aria-labelledby="toc-outline-btn">
-                  <ul>
-                    <li>
-                      <a
-                        href={`#`}
-                        class="block border-b border-gray-250 bg-lightBackground text-lightText dark:bg-darkBackground dark:text-darkText"
-                        onClick={() => setIsOpen((v) => !v)}
-                      >
-                        Return to top
-                      </a>
-                    </li>
-                    {headings.map((heading) => {
-                      return (
-                        <li key={heading.id}>
-                          <a
-                            href={`#${heading.id}`}
-                            class="block bg-lightBackground text-lightText  dark:bg-darkBackground dark:text-darkText"
-                            onClick={() => setIsOpen((v) => !v)}
-                            dangerouslySetInnerHTML={{ __html: heading.html }}
-                          />
-                        </li>
-                      );
-                    })}
-                  </ul>
+                  <div class="mx-auto flex w-full max-w-lg items-center justify-center ">
+                    <div class="relative z-10 flex w-full cursor-pointer items-center overflow-hidden rounded-xl border-slate-800 p-[3px]">
+                      <div class="animate-rotate absolute inset-0 h-full w-full rounded-full bg-[conic-gradient(#0ea5e9_20deg,transparent_120deg)]">
+                      </div>
+                      <div class="relative z-20 flex w-full p-3 rounded-[0.60rem] bg-gray-50 text-lightText dark:bg-darkBackground dark:text-darkText">
+                        <ul class="truncate">
+                          <li>
+                            <a
+                              href={`#`}
+                              class="block border-b text-[#0ea5e9] dark:text-blue-400 border-gray-250"
+                              onClick={() => setIsOpen((v) => !v)}
+                            >
+                              Return to top
+                            </a>
+                          </li>
+                          {headings.map((heading) => {
+                            return (
+                              <li key={heading.id}>
+                                <a
+                                  href={`#${heading.id}`}
+                                  class="block"
+                                  onClick={() => setIsOpen((v) => !v)}
+                                  dangerouslySetInnerHTML={{ __html: heading.html }}
+                                />
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
                 </nav>
               </div>
+
+              
+
+
+
             )}
           </div>
           {/* For desktop */}
