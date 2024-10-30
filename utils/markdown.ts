@@ -140,7 +140,6 @@ class DefaultRenderer extends Marked.Renderer {
         const renderedKaTeX = katex.renderToString(text, {
           displayMode: true, 
           throwOnError: false,
-          output: 'html', 
           strict: 'ignore', 
           minRuleThickness: 0.06, 
         });
