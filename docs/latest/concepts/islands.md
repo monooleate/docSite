@@ -3,6 +3,22 @@ description: |
   Islands enable client side interactivity in Fresh. They are hydrated on the client in addition to being rendered on the server.
 ---
 
+\`\`\`mermaid
+graph TD;
+  A-->B;
+  A-->C;
+  B-->D;
+  C-->D;
+\`\`\`
+
+```mermaid
+graph TD;
+  A-->B;
+  A-->C;
+  B-->D;
+  C-->D;
+```
+
 Islands enable client side interactivity in Fresh. Islands are isolated Preact
 components that are rendered on the server and then hydrated on the client. This
 is different from all other components in Fresh, as they are usually rendered on

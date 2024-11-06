@@ -218,7 +218,7 @@ export default define.page<typeof handler>(function DocsPage(props) {
                 <aside class="hidden lg:flex justify-end sticky top-16">
                   <TableOfContents headings={headings} />
                 </aside>
-                <div class="lg:order-1 mx-auto min-w-0 max-w-2xl w-full bg-lightBackground text-lightText dark:bg-darkBackground dark:text-darkText">
+                <div class="lg:order-1 mx-auto min-w-0 max-w-3xl w-full bg-lightBackground text-lightText dark:bg-darkBackground dark:text-darkText">
                   <h1 class="text-4xl text-gray-900 tracking-tight font-bold md:mt-0 px-4 md:px-0 mb-4 dark:bg-darkBackground dark:text-darkText">
                     {page.title}
                   </h1>
